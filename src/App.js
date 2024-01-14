@@ -1,11 +1,15 @@
 
 import './App.css';
-import { BrowserRouter , Switch , Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter , Switch , Route, Router, Routes , Redirect, Navigate } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Navigation from './components/shared/Navigation/Navigation';
-import Register from './pages/Register/Register';
 
-import Login from './pages/Login/Login';
+import  GuestRoutes  from './utils/routes/GuestRoutes';
+import Authenticate from './pages/authenticate/Authenticate';
+import SemiProtectRoutes from './utils/routes/SemiProtectRoutes';
+import Activate from './pages/activate/Activate' 
+import ProtectedRoutes from './utils/routes/ProtectedRoutes';
+import Rooms from './pages/Rooms/Rooms';
 
 
 
@@ -14,13 +18,24 @@ function App() {
     <BrowserRouter>
       <Navigation />
       <Routes>
-        <Route path='/' exact element={<Home />} />
-        <Route path='/register' element ={<Register />} />
-        <Route path='/login' exact element={<Login/>} />
-        </Routes>        
-  
+       
+        <Route element={<GuestRoutes />} >
+            <Route element={< Authenticate />} path='/authenticate' exact/>
+            <Route path='/' exact element={<Home />} />
+        </Route>
+        <Route element={<SemiProtectRoutes/>}>
+          <Route element={<Activate />} path='/activated'  />
+        </Route>
+
+        <Route element = {<ProtectedRoutes />}>
+          <Route element={<Rooms/>} path='/rooms' />
+        </Route>
+
+        </Routes>
     </BrowserRouter>
   );
 }
+
+
 
 export default App;
