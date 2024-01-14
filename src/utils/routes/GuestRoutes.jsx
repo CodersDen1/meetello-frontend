@@ -5,7 +5,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 
 const GuestRoutes = () => {
-   let isAuth=TurnedInNotOutlined
+   let isAuth=false
   
     return (
     isAuth ? <Navigate to='/rooms' />: <Outlet />

@@ -22,8 +22,8 @@ const Home = () => {
 
 
   const navigate = useNavigate();
-  const registerNow=()=>{
-        navigate('/register')
+  const authenticate=()=>{
+        navigate('/authenticate')
         console.log('Button clicked')
   }  
 
@@ -35,11 +35,10 @@ const Home = () => {
         <p className={styles.text}>We at Meetello , are gradually building up the neet envoirnment for audio conferencing app , if anything break do let us know so that we can fix it!!!</p>
 
         <div >
-          <Button onClick={registerNow} title="Get your  account!" icon={<ArrowForwardIosRoundedIcon/>} />
+          <Button onClick={authenticate} title="Lets get started!" icon={<ArrowForwardIosRoundedIcon/>} />
         </div>
         <div className={styles.signWrapper}>
           <span className={styles.invite}>Have a invite code?</span>
-          <Link  style={linkStyle} to="/login">Sign In</Link>
         </div>
 
       </Card>
