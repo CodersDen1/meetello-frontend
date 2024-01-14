@@ -4,7 +4,7 @@ import React from 'react'
 import styles from "./Button.module.css"
 
 
-function Button({title ,icon ,onClick}) {
+const Button=({title ,icon ,onClick}) => {
   return (
     <div >
         <button onClick={onClick} className={styles.button}>

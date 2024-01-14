@@ -4,7 +4,10 @@
     background:#1d1d1d ;
     padding: 30px;
     border-radius: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     }
     
     .headingWrapper{
@@ -15,6 +18,7 @@
     }
     
     .heading{
+        margin-left: 15px;
         font-size: 25px;
         font-weight: bold;
     }
