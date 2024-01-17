@@ -5,14 +5,36 @@ import TextInput from '../../../components/shared/TextInput/TextInput';
 
 import styles from './StepOTP.module.css';
 import Button from '../../../components/shared/Button/Button';
-
+import { verifyOtp } from '../../../http';
+import { UseSelector, useDispatch, useSelector } from 'react-redux';
+import { setAuth } from '../../../store/authSlice';
+import { UseDispatch } from 'react-redux';
 
 const StepOTP=({onNext}) => {
 
-  function next(){
-      console.log(otp)
-  }
+  
   const [otp , setOtp] = useState('');
+  const {phoneNumber , email } = useSelector((state)=>state.auth.otp)
+  const disaptch = useDispatch(); 
+  const onSubmit = async()=>{
+     
+       try{
+         const data =  await verifyOtp({
+              otp , 
+              phoneNumber:phoneNumber ,
+              email:email});
+              console.log(data);
+              disaptch(setAuth(
+                data
+              ));
+       }catch(e){
+         console.log(e)  
+      }
+     
+
+       //onNext(); 
+  }
+
 
   return (
     <>
@@ -29,7 +51,7 @@ const StepOTP=({onNext}) => {
                     <div className={styles.actionButtonWrapper}>
 
                     <Button title="Continue" icon={<ArrowCircleRightOutlined/>} 
-                    onClick={onNext}
+                    onClick={onSubmit}
                     />
                     </div>
 

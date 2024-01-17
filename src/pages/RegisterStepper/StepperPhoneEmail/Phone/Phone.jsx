@@ -7,13 +7,36 @@ import { ArrowCircleRightOutlined, LocalPhoneOutlined } from '@mui/icons-materia
 import { colors } from '@mui/material';
 import TextInput from '../../../../components/shared/TextInput/TextInput';
 
+import { sendOTP } from '../../../../http';
+import { useDispatch } from 'react-redux';
+import { setOtp } from '../../../../store/authSlice';
+
 
 
 const Phone = ({onNext}) => {
 
   const [phoneNumber , setPhoneNumber] = useState('');
 
-  
+  const dispatch = useDispatch();
+
+  const onSubmit= async()=>{
+ 
+
+    //server req
+
+    const {data} = await sendOTP({phoneNumber:phoneNumber});
+    
+    dispatch(setOtp(
+      {
+        phoneNumber:data.phoneNumber ,
+        hash:data.otp,
+        email:data.email,
+      }))
+    
+     onNext();
+  }
+   
+
 
   return (
     <Card title="Please enter your phone number" icon ={<LocalPhoneOutlined/>}>
@@ -23,7 +46,7 @@ const Phone = ({onNext}) => {
                     <div className={styles.actionButtonWrapper}>
 
                     <Button title="Continue" icon={<ArrowCircleRightOutlined/>}
-                    onClick={onNext}
+                    onClick={onSubmit}
                     />
                     </div>
 

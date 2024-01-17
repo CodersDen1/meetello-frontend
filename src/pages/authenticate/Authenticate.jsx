@@ -26,6 +26,7 @@ const Authenticate = () =>{
     return (
         <div>
       
+
         <Step  onNext={onNextClick}/>
           
       </div>
