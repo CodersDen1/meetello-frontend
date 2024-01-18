@@ -6,9 +6,9 @@ import TextInput from '../../../components/shared/TextInput/TextInput';
 import styles from './StepOTP.module.css';
 import Button from '../../../components/shared/Button/Button';
 import { verifyOtp } from '../../../http';
-import { UseSelector, useDispatch, useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { setAuth } from '../../../store/authSlice';
-import { UseDispatch } from 'react-redux';
+
 
 const StepOTP=({onNext}) => {
 

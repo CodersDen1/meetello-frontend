@@ -15,6 +15,6 @@ export const sendOTP =(data)=> api.post('/api/users/generate',data)
 
 export const verifyOtp=(data)=> api.post('/api/users/verify-otp',data)
 
-export const activate =(data)=> api.post('/api/users/activate', data)
+export const activate =(data)=> api.post(`/api/users/activate`, data)
 
 export default api;

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
 name:'',
-avatar:''
+avatar:'',
 }
 
 export const activateSlice = createSlice({
@@ -14,7 +14,8 @@ export const activateSlice = createSlice({
     },
     setAvatar:(state , action)=>{
           state.avatar = action.payload;
-    }
+    },
+    
    
   },
 })
