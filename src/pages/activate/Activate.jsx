@@ -28,7 +28,7 @@ const stepper={
 
   return (
     <>
-     <div >
+     <div className="cardWrapper" >
             <Step onClick={onNextClick} />
     </div>
     </>
